@@ -132,7 +132,7 @@ function timer() {
         	stop();
         	$(".display-timer").hide();
             currentCounter = count - 1;
-            $("#" + questionsList[currentCounter].answer).css("background-color", "#4caf50");
+            $("#" + questionsList[currentCounter].answer).css("background-color", "#abe575");
             unanswered++;
             $(".unanswered").html("unanswered:" + unanswered); 
             lastQuestionUnanswered=true;       
