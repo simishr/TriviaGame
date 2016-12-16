@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Trivia Game</title>
+		<!-- BOOTSTRAP LINK -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- CSS LINK -->
+		<link rel="stylesheet" href="./assets/css/style.css" type="text/css">
+		<!-- GOOGLE FONT LINK -->
+		<link href="https://fonts.googleapis.com/css?family=Quantico" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+		<!-- JQUERY LINK -->
+		<script type='text/javascript' src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
+		
+	</head>
+	<body>
+		<!-- HEADER BEGINS -->
+		<div class="container">
+			<div class="jumbotron">
+				<h1 class="h3-width text-center">Pixar Trivia!</h1>
+				<button class="btn btn-danger start center-block"><h4>Start Game</h4></button>
+				<h3 class="display-timer text-center"></h3>
+			</div>
+		</div>
+		<!-- MAIN CONTAINER BEGINS -->
+		<div class="container non-header">
+			<div class="row question-area">
+				<div ><h2 id="question"></h2></div>
+			</div>
+			<div class="col-md-6">
+				<div class="row"><h3 class="option" id="0"></h3></div>
+				<div class="row"><h3 class="option" id="1"></h3></div>
+				<div class="row"><h3 class="option" id="2"></h3></div>
+				<div class="row"><h3 class="option" id="3"></h3></div>
+			</div>
+			<div class="col-md-6">
+				<span id="placeholder"></span>
+			</div>	
+		</div>
+		<div class="container resultArea text-center">
+			<h3>Right Guesses: <span class="rightGuessClass"></span></h3>
+			<h3>Wrong Guesses: <span class="wrongGuessClass"></span></h3>
+            <h3>Unanswered: <span class="unanswered"></span></h3>
+            <button class="btn btn-success restartGame-btn"><h4>PLAY AGAIN</h4></button>
+		</div>
+		<!-- JAVASCRIPT LINK -->
+		<script type='text/javascript' src="./assets/javascript/app.js"></script>
+	</body>
+</html>
