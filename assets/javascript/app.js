@@ -1,5 +1,5 @@
 //GLOBAL VARIABLES..
-var seconds = 5;
+var seconds = 20;
 var showImage;
 var timer;
 var lastQuestionUnanswered = false;
@@ -40,6 +40,14 @@ var questionsList = [
     image: "./assets/images/sully.gif" 
 } ]
 
+var sounds = {
+ gameOver: {
+     sound: new Howl({
+         urls: ['./assets/sounds/applause.mp3'],
+     })
+ }, 
+};
+
 window.onload = function() {
     $(".non-header").hide();
     $(".resultArea").hide();
@@ -60,14 +68,14 @@ function startGame() {
     $(".start").hide();
     $(".resultArea").hide();
     populate();
-    showImage = setInterval(populate, 5000);
+    showImage = setInterval(populate, 20000);
     counter = setInterval(timer, 1000);
 }
 
 function stop() {
 	clearInterval(counter);
     clearInterval(showImage);
-    setTimeout(populate, 2000);
+    setTimeout(populate, 1000);
 }
 
 function nextQuestion() {
@@ -93,12 +101,15 @@ function answerChecking(event) {
 }
 
 function displayResult() {
+
     $(".display-timer").hide();
     $(".non-header").hide();
     $(".resultArea").show();
     $(".rightGuessClass").html(right);
     $(".wrongGuessClass").html(wrong);
     $(".unanswered").html(unanswered);
+     sounds.gameOver.sound.play();
+
 }
 
 function populate() {
@@ -110,7 +121,7 @@ function populate() {
     }
     
     if (count < questionsList.length) {
-        seconds = 5;
+        seconds = 20;
         $(".display-timer").html(seconds + " seconds left!");
         $("#question").html( questionsList[count].question);
         $("#placeholder").html("<img src=" + questionsList[count].image + ">");
@@ -127,25 +138,27 @@ function populate() {
 }
 
 function timer() {
-   $(".display-timer").html("Seconds left: " + seconds);
-        if (seconds === 0) {
-        	stop();
-        	$(".display-timer").hide();
-            currentCounter = count - 1;
-            $("#" + questionsList[currentCounter].answer).css("background-color", "#abe575");
-            unanswered++;
-            $(".unanswered").html("unanswered:" + unanswered); 
-            lastQuestionUnanswered=true;       
-            
-             if (count >= questionsList.length) {
-                 displayResult();
-                 clearInterval(counter);
-            } 
-            return;
-        }
+  $(".display-timer").html("Seconds left: " + seconds);
+       if (seconds === 0) {
+           stop();
+           $(".display-timer").hide();
+           currentCounter = count - 1;
+           $("#" + questionsList[currentCounter].answer).css("background-color", "#abe575 ");
+           if ((unanswered + right + wrong) < questionsList.length){
+               unanswered++;
+           }
+           $(".unanswered").html("unanswered:" + unanswered); 
+           lastQuestionUnanswered=true;       
+           
+            if (count >= questionsList.length) {
+                displayResult();
+                clearInterval(counter);
+           } 
+           return;
+       }
 
-    lastQuestionUnanswered=false;
-    seconds--;
+   lastQuestionUnanswered=false;
+   seconds--;
 }
 
 
