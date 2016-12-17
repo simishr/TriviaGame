@@ -43,7 +43,7 @@ var questionsList = [
 var sounds = {
  gameOver: {
      sound: new Howl({
-         urls: ['./assets/sounds/applause.mp3'],
+         urls: ['./assets/sounds/Applause.mp3'],
      })
  }, 
 };
