@@ -43,9 +43,14 @@ var questionsList = [
 var sounds = {
  gameOver: {
      sound: new Howl({
-         urls: ['./assets/sounds/Applause.mp3'],
+         urls: ['./assets/sounds/Applause.mp3']
      })
  }, 
+ gameOverBoo: {
+    sound: new Howl({
+        urls: ['./assets/sounds/Boo.mp3']
+    })
+ }
 };
 
 window.onload = function() {
@@ -108,8 +113,12 @@ function displayResult() {
     $(".rightGuessClass").html(right);
     $(".wrongGuessClass").html(wrong);
     $(".unanswered").html(unanswered);
-     sounds.gameOver.sound.play();
-
+    if(right >= 5) {
+        sounds.gameOver.sound.play();
+     }
+    else{
+        sounds.gameOverBoo.sound.play();
+     }    
 }
 
 function populate() {
